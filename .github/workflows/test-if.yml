@@ -37,7 +37,7 @@ jobs:
 
       # Implicit if expression
       - name: Run a script if main
-        if: github.ref != 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: echo "We're on main"
         
       # Explicit if expression
