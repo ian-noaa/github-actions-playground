@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Env expansion
 
 # Controls when the workflow will run
 on:
@@ -17,6 +17,10 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    strategy:
+      matrix:
+        case: [a, b]
+      fail-fast: false
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -25,11 +29,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Test env variable expansion
-        run: echo Hello, ${github.ref}!
-
       # Runs a set of commands using the runners shell
       - name: Test expression syntax expansion
         run: |
-          echo  Expression sytanx expansion: ${{ github.ref }}
+          echo Expression sytanx expansion: ${{ github.ref }}
+          echo For case: ${{ matrix.case }}
+
+      # Runs a single command using the runners shell
+      - name: Test env variable expansion
+        run: echo "Hello, ${github.ref} for case: ${{ matrix.case }}."
