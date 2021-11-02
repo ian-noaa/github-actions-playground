@@ -35,10 +35,12 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
+      # Implicit if expression
       - name: Run a script if main
-        if: {{ github.ref != 'refs/heads/main' }}
+        if: github.ref != 'refs/heads/main'
         run: echo "We're on main"
         
+      # Explicit if expression
       - name: Run a script if dev
-        if: {{ github.ref == 'refs/heads/dev' }}
+        if: ${{ github.ref == 'refs/heads/dev' }}
         run: echo "We're on dev!"
