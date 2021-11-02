@@ -40,5 +40,5 @@ jobs:
         run: echo "We're on main"
         
       - name: Run a script if dev
-        if: github.ref == 'refs/heads/dev'
+        if: ${{ github.ref }} == 'refs/heads/dev'
         run: echo "We're on dev!"
