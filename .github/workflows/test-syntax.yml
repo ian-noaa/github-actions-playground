@@ -24,3 +24,7 @@ jobs:
       - name: Test Github Ref Context Variable
         run: |
           echo "foo/bar:${{ github.ref }}"
+          
+      - name: Test Github Ref syntax fail
+        run: |
+          echo "foo/bar:${ GITHUB_REF }"
