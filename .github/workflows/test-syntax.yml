@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Test Github Ref Env Variable
         run: |
-          echo "foo/bar:${ GITHUB_REF }"
+          echo "foo/bar:$GITHUB_REF"
